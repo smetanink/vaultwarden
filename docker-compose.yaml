@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  bitwarden:
+    container_name: bitwarden
+    image: vaultwarden/server:latest
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - 8080:80
+      - 3012:3012
+    volumes:
+      - ${BITWARDEN_DATA}:/data/
+
+  backup:
+    container_name: backup
+    build: src/
+    image: vaultwarden-backup
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - ${BITWARDEN_DATA}:/data/
+      - ${BACKUP_FOLDER}:/backup/
+        
