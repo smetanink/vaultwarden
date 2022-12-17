@@ -8,15 +8,12 @@ RUN apk add --no-cache \
     aws-cli
 
 # Copy scripts
-COPY entrypoint.sh /
-COPY backup.sh /
-COPY restore-backup.sh /
+COPY *.sh /
 
 # Give execution permission to scripts
-RUN chmod +x /entrypoint.sh && \
-    chmod +x /backup.sh && \
-    chmod +x /restore-backup.sh
+RUN chmod +x /*.sh
 
 ENV BACKUP_CRONED="0 */12 * * *"
+ENV REMOVE_BACKUPS_CRONED="10 0 * * *"
 
 ENTRYPOINT ["/entrypoint.sh"]
