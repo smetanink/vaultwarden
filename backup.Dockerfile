@@ -8,7 +8,7 @@ RUN apk add --no-cache \
     aws-cli
 
 # Copy scripts
-COPY *.sh /
+COPY backup/*.sh /
 
 # Give execution permission to scripts
 RUN chmod +x /*.sh

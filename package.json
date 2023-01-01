@@ -1,0 +1,55 @@
+{
+  "name": "@smetanink/vaultwarden",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepare": "husky install",
+    "format": "prettier --write tg-status-bot",
+    "build": "tsc",
+    "build:check": "tsc --noEmit",
+    "start": "env-cmd ts-node tg-status-bot/index.ts | pino-pretty",
+    "lint": "eslint tg-status-bot",
+    "lint:fix": "eslint tg-status-bot --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "update:dependency:versions": "ncu -u"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smetanink/vaultwarden"
+  },
+  "author": "Konstantin Smetanin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smetanink/vaultwarden/issues"
+  },
+  "homepage": "https://github.com/smetanink/vaultwarden#readme",
+  "devDependencies": {
+    "@types/jest": "29.2.4",
+    "@types/sql.js": "1.4.4",
+    "@typescript-eslint/eslint-plugin": "5.46.1",
+    "@typescript-eslint/parser": "5.46.1",
+    "@vercel/ncc": "0.36.0",
+    "env-cmd": "10.1.0",
+    "eslint": "8.30.0",
+    "husky": "8.0.2",
+    "jest": "29.3.1",
+    "lint-staged": "13.1.0",
+    "prettier": "2.8.1",
+    "pino-pretty": "9.1.1",
+    "ts-jest": "29.0.3",
+    "ts-node": "10.9.1",
+    "typescript": "4.9.4",
+    "npm-check-updates": "16.6.0"
+  },
+  "dependencies": {
+    "grammy": "1.12.0",
+    "koa": "2.14.1",
+    "pino": "8.8.0",
+    "typeorm": "0.3.11",
+    "sql.js": "1.8.0"
+  }
+}
