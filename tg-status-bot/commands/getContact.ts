@@ -1,7 +1,7 @@
 import { Bot } from 'grammy';
 
 import { DBConnection } from '../connectors/database';
-import Users from '../entities/user';
+import User from '../entities/user';
 
 import { LoggerContext } from '../logger';
 import { hideKeyboard, mainKeyboard } from '../keyboards';
@@ -16,7 +16,7 @@ export default async function getContact(bot: Bot<LoggerContext>) {
     const allowedPhones: Array<string> = (process.env.TG_ALLOWED_PHONES || '').split(',');
 
     if (tgNumber && phoneNumber && allowedPhones.indexOf(phoneNumber) > -1) {
-      const userRepository = DBConnection.getRepository(Users);
+      const userRepository = DBConnection.getRepository(User);
       await userRepository.upsert({ phoneNumber, tgNumber }, ['phoneNumber']);
 
       ctx.log.info(`Added contact: ${phoneNumber}`);

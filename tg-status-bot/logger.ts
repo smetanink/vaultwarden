@@ -1,12 +1,14 @@
-import { Context, Middleware, NextFunction } from 'grammy';
-import Logger, { BaseLogger } from 'pino';
+import { Context, NextFunction } from 'grammy';
+import Logger, { BaseLogger, LoggerOptions } from 'pino';
 
-const log: BaseLogger = Logger({
+export const loggerOptions: LoggerOptions = {
   safe: true,
   name: 'logger',
   level: 'trace',
   timestamp: true,
-});
+};
+
+export const log: BaseLogger = Logger(loggerOptions);
 
 export type LoggerContext = Context & { log: BaseLogger };
 

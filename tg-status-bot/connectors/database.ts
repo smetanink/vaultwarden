@@ -1,13 +1,13 @@
 import { DataSource, DataSourceOptions, EntityTarget, ObjectLiteral, Repository } from 'typeorm';
 
-import Users from '../entities/user';
+import User from '../entities/user';
 
 const sqlJsOptions: DataSourceOptions = {
   type: 'sqljs',
   location: process.env.TG_DB_LOCATION || 'tg-data',
   autoSave: true,
   synchronize: true,
-  entities: [Users],
+  entities: [User],
 };
 
 export class Connection {
