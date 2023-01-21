@@ -10,6 +10,7 @@
     "build": "tsc",
     "build:check": "tsc --noEmit",
     "start": "env-cmd ts-node tg-status-bot/index.ts | pino-pretty",
+    "start:prod": "env-cmd node dist/index.js",
     "lint": "eslint tg-status-bot",
     "lint:fix": "eslint tg-status-bot --fix",
     "test": "jest",

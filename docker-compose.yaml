@@ -13,11 +13,26 @@ services:
     volumes:
       - ${BITWARDEN_DATA}:/data/
 
+  tg-bot:
+    container_name: tg-bot
+    build:
+      dockerfile: bot.Dockerfile
+    image: tg-bot
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - ${TG_DB_LOCATION}:/${TG_DB_LOCATION}
+
   backup:
     container_name: backup
+    depends_on:
+      - tg-bot
     build:
       dockerfile: backup.Dockerfile
     image: vaultwarden-backup
+    environment:
+      - BOT_URL=http://tg-bot:${HTTP_PORT}
     env_file:
       - .env
     restart: always
