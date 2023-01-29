@@ -4,7 +4,7 @@ import User from '../entities/user';
 
 const sqlJsOptions: DataSourceOptions = {
   type: 'sqljs',
-  location: process.env.TG_DB_LOCATION || 'tg-data',
+  location: `${process.env.TG_DB_LOCATION || 'tg-data'}/sqljs-data`,
   autoSave: true,
   synchronize: true,
   entities: [User],
